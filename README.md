@@ -5,7 +5,7 @@ Note: this is not ws, it is raw TCP.
 ## Running
 
 ```bash
-go run .
+ADDRESS=host:port go run .
 ```
 
 ## Rules
