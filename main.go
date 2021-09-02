@@ -13,7 +13,7 @@ import (
 var scores = map[string]int64{}
 
 func main() {
-	address := os.Getenv("HOST")
+	address := os.Getenv("ADDRESS")
 	if address == "" {
 		address = "0.0.0.0:3444"
 	}
