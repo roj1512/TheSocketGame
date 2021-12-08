@@ -7,9 +7,11 @@ import (
 	"net"
 	"os"
 	"strings"
+	"sync"
 	"time"
 )
 
+var mutex = &sync.Mutex{}
 var scores = map[string]int64{}
 
 func main() {
@@ -43,7 +45,7 @@ func handle(conn net.Conn, err error) error {
 	if err != nil {
 		return err
 	}
-	
+
 	message = strings.TrimRight(message, "\n")
 
 	if strings.HasPrefix(message, "+") {
@@ -52,10 +54,12 @@ func handle(conn net.Conn, err error) error {
 			return conn.Close()
 		}
 
+		mutex.Lock()
 		scores[user] = scores[user] + 1
+		mutex.Unlock()
 	} else {
 		err := json.NewEncoder(conn).Encode(scores)
-		if (err != nil) {
+		if err != nil {
 			return err
 		}
 	}
