@@ -16,4 +16,4 @@ ADDRESS=host:port go run .
 ## Credits
 
 - Original idea from [ShiSHcat](https://github.com/ShiSHcat).
-- Rewritten by [me](https://github.com/rojserbest).
+- Rewritten by [me](https://github.com/roj1512).
